@@ -1,0 +1,18 @@
+name: Rodar Bot de Cinema
+
+on:
+  schedule:
+    - cron: '0 12 * * 3'  # Toda quarta às 12h UTC (9h no Brasil)
+
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Baixar código
+        uses: actions/checkout@v3
+
+      - name: Instalar dependências
+        run: pip install -r requirements.txt
+
+      - name: Executar bot
+        run: python bot.py
